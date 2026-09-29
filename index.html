@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClipEarn | Turn Short-Form Views Into Cash</title>
+    <title>ClipReach | Turn Short-Form Views Into Cash</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
@@ -66,7 +66,7 @@
                 <div class="w-9 h-9 rounded-lg bg-brand-black flex items-center justify-center text-brand-white text-sm group-hover:bg-brand-red transition-colors">
                     <i class="fa-solid fa-scissors"></i>
                 </div>
-                <span class="font-abril text-2xl tracking-wide text-brand-black mt-1">ClipEarn.</span>
+                <span class="font-abril text-2xl tracking-wide text-brand-black mt-1">Clip<span class="text-brand-red">Reach</span>.</span>
             </a>
 
             <!-- Multi-Page Nav Links -->
@@ -254,8 +254,11 @@
         </section>
 
         <!-- Final CTA -->
-        <section class="py-28 bg-brand-black text-center">
-            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="py-28 bg-brand-black text-center relative overflow-hidden">
+            <!-- Focused glow behind the button -->
+            <div class="absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[100px] bg-brand-red/30 blur-[60px] pointer-events-none"></div>
+
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <h2 class="font-abril text-4xl md:text-5xl text-brand-white mb-6">Ready to monetize your edits?</h2>
                 <p class="font-source text-xl text-gray-400 mb-10">Join hundreds of skilled clippers generating revenue from their viral reach today.</p>
                 <a href="dashboard.html" class="inline-block px-10 py-4 rounded-full bg-brand-red text-brand-white font-source font-bold text-lg hover:bg-red-600 transition-all shadow-[0_0_40px_rgba(255,0,0,0.4)]">
@@ -273,7 +276,7 @@
                 <div class="col-span-1 md:col-span-2">
                     <a href="index.html" class="flex items-center gap-2 mb-4">
                         <i class="fa-solid fa-scissors text-brand-red text-xl"></i>
-                        <span class="font-abril text-2xl text-brand-black">ClipEarn.</span>
+                        <span class="font-abril text-2xl text-brand-black">Clip<span class="text-brand-red">Reach</span>.</span>
                     </a>
                     <p class="font-source text-gray-500 max-w-sm leading-relaxed">
                         The performance-based UGC marketplace bridging the gap between brands and viral video editors.
@@ -301,7 +304,7 @@
             </div>
             
             <div class="pt-8 border-t border-brand-border flex flex-col md:flex-row items-center justify-between gap-4 font-source text-gray-400 text-sm">
-                <p>&copy; 2026 ClipEarn. All rights reserved.</p>
+                <p>&copy; 2026 ClipReach. All rights reserved.</p>
                 <div class="flex gap-4 text-lg">
                     <a href="#" class="hover:text-brand-black transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
                     <a href="#" class="hover:text-brand-black transition-colors"><i class="fa-brands fa-discord"></i></a>
