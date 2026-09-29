@@ -1,88 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiring Flyer</title>
+    <title>ClipEarn | Turn Short-Form Views Into Cash</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
-    <!-- Importing specific fonts to match the flyer's aesthetic -->
+    <!-- Exact Font Stack Requested -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Playfair+Display:wght@900&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Source+Sans+3:wght@400;700;900&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'serif': ['"Playfair Display"', 'serif'],    /* For the top heading */
-                        'impact': ['"Oswald"', 'sans-serif'],        /* For the tall red text */
-                        'sans': ['"Roboto"', 'sans-serif'],          /* For standard bold text */
+                        'abril': ['"Abril Fatface"', 'serif'],
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'source': ['"Source Sans 3"', 'sans-serif']
                     },
                     colors: {
-                        'flyer-red': '#ff0000',                      /* Pure red from the image */
-                        'flyer-black': '#000000'                     /* Pure black */
+                        'brand-red': '#ff0000',
+                        'brand-black': '#000000',
+                        'brand-white': '#ffffff',
                     }
                 }
             }
         }
     </script>
+
+    <style>
+        body { background-color: #ffffff; color: #000000; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #ffffff; border-left: 2px solid #000; }
+        ::-webkit-scrollbar-thumb { background: #000000; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff0000; }
+
+        /* Brutalist Hard Shadows */
+        .hard-shadow {
+            box-shadow: 6px 6px 0px 0px #000000;
+            transition: all 0.2s ease;
+        }
+        .hard-shadow:hover {
+            box-shadow: 2px 2px 0px 0px #000000;
+            transform: translate(4px, 4px);
+        }
+    </style>
 </head>
-<body class="bg-white min-h-screen flex items-center justify-center p-4 antialiased">
-    
-    <!-- Flyer Container -->
-    <div class="max-w-2xl w-full flex flex-col items-center bg-white py-12 md:py-20 px-6 sm:px-12">
-        
-        <!-- Top Heading -->
-        <h1 class="font-serif text-5xl md:text-[4.5rem] font-black tracking-wide text-flyer-black mb-10 whitespace-nowrap">
-            WE ARE HIRING
-        </h1>
+<body class="font-source antialiased border-x-8 border-brand-black max-w-[1600px] mx-auto min-h-screen flex flex-col">
 
-        <!-- Role Title Block -->
-        <div class="flex flex-col items-center text-center leading-none mb-10 w-full">
-            <h2 class="font-sans text-4xl md:text-[3rem] font-black text-flyer-black uppercase tracking-tight mb-3">
-                BACK OFFICE
-            </h2>
-            <h2 class="font-sans text-4xl md:text-[3rem] font-black text-flyer-black uppercase tracking-tight mb-4">
-                EXECUTIVE <span class="text-3xl md:text-4xl">&</span>
-            </h2>
+    <!-- Navigation -->
+    <header class="w-full border-b-4 border-brand-black bg-brand-white z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Highlighted Red Text -->
-            <h2 class="font-impact text-7xl md:text-[7.5rem] font-bold text-flyer-red uppercase tracking-tight transform scale-y-110 mt-2">
-                TELECALLER
-            </h2>
-        </div>
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-brand-black flex items-center justify-center text-brand-white text-xl">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span class="font-abril text-3xl tracking-wide text-brand-black mt-1">Clip<span class="text-brand-red">Earn</span></span>
+            </a>
 
-        <!-- Salary Block -->
-        <div class="flex items-baseline justify-center gap-3 mb-12 mt-6 w-full">
-            <span class="font-sans text-6xl md:text-[5rem] font-black text-flyer-black uppercase tracking-tighter">SALARY</span>
-            <span class="font-sans text-2xl md:text-3xl font-bold text-flyer-black tracking-tight self-end mb-2 md:mb-3">upto</span>
-            <span class="font-sans text-6xl md:text-[5.5rem] font-black text-flyer-red uppercase tracking-tighter">20K</span>
-        </div>
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-source font-black uppercase text-lg tracking-tight">
+                <a href="#how-it-works" class="hover:text-brand-red transition-colors">How it Works</a>
+                <a href="#campaigns" class="hover:text-brand-red transition-colors">Live Bounties</a>
+            </nav>
 
-        <!-- Requirements Section -->
-        <div class="w-full max-w-lg mx-auto mb-14">
-            <h3 class="font-sans text-xl md:text-2xl font-black text-flyer-black uppercase underline decoration-3 underline-offset-4 mb-4">
-                REQUIREMENT
-            </h3>
-            <ul class="list-disc pl-6 space-y-2 font-sans text-lg md:text-xl text-flyer-black font-medium leading-relaxed">
-                <li>Experience in Back-Office / Telecalling.</li>
-                <li>Fluent in Assamese & Basic English.</li>
-                <li>Basic Computer Skills.</li>
-            </ul>
+            <!-- CTA -->
+            <div class="flex items-center gap-4">
+                <a href="dashboard.html" class="hidden sm:block font-source font-black uppercase text-lg hover:text-brand-red transition-colors underline underline-offset-4 decoration-2">Login</a>
+                <a href="dashboard.html" class="px-6 py-2 bg-brand-red text-brand-white font-bebas text-2xl tracking-wide uppercase hard-shadow border-2 border-brand-black">
+                    Start Earning
+                </a>
+            </div>
         </div>
+    </header>
 
-        <!-- Footer Contact Info -->
-        <div class="flex flex-col items-center text-center w-full">
-            <p class="font-sans text-2xl md:text-[2rem] font-black text-flyer-black uppercase tracking-wide mb-3">
-                LOCATION: JYOTIKUCHI
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 text-center">
+            
+            <div class="inline-block border-2 border-brand-black px-4 py-2 font-source font-black uppercase tracking-widest text-brand-red mb-8">
+                Over $12,400 in Active Bounties Today
+            </div>
+            
+            <div class="flex flex-col items-center leading-none mb-10 w-full">
+                <h1 class="font-source font-black text-5xl md:text-[4rem] text-brand-black uppercase tracking-tighter mb-4">
+                    Turn Your Edits Into
+                </h1>
+                
+                <!-- Massive Impact Text -->
+                <h1 class="font-bebas text-[7rem] md:text-[11rem] text-brand-red tracking-wide leading-[0.8] mt-2">
+                    REAL CASH
+                </h1>
+            </div>
+            
+            <p class="max-w-2xl mx-auto text-xl md:text-2xl font-source text-gray-800 mb-12 font-medium leading-relaxed">
+                The premier performance marketplace for short-form creators. Download raw footage, post to TikTok or Shorts, and get paid for every 100k views you generate.
             </p>
-            <p class="font-sans text-2xl md:text-[2rem] font-black text-flyer-black uppercase tracking-wide">
-                CONTACT: 6002413305
-            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="dashboard.html" class="w-full sm:w-auto px-10 py-4 bg-brand-red text-brand-white font-bebas text-4xl tracking-wider uppercase hard-shadow border-4 border-brand-black">
+                    Claim A Bounty
+                </a>
+                <a href="#how-it-works" class="w-full sm:w-auto px-10 py-4 bg-brand-white text-brand-black font-bebas text-4xl tracking-wider uppercase hard-shadow border-4 border-brand-black hover:bg-gray-100">
+                    See Details
+                </a>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="w-full border-y-4 border-brand-black bg-brand-red py-4 overflow-hidden flex whitespace-nowrap">
+            <div class="font-bebas text-3xl text-brand-white tracking-widest space-x-12 animate-marquee inline-block">
+                <span>★ ZERO FOLLOWER MINIMUMS</span>
+                <span>★ GET PAID FOR VIEWS</span>
+                <span>★ WEEKLY PAYOUTS</span>
+                <span>★ PREMIUM BRANDS</span>
+                <span>★ ZERO FOLLOWER MINIMUMS</span>
+                <span>★ GET PAID FOR VIEWS</span>
+                <span>★ WEEKLY PAYOUTS</span>
+            </div>
         </div>
 
-    </div>
+        <!-- How It Works -->
+        <section id="how-it-works" class="py-24 bg-brand-white border-b-4 border-brand-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="font-abril text-5xl md:text-6xl text-brand-black underline decoration-brand-red decoration-8 underline-offset-8 mb-6">No Contracts. Just Output.</h2>
+                    <p class="font-source text-xl font-bold uppercase tracking-widest text-gray-600">If your edits get views, you get paid. It's that simple.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="border-4 border-brand-black p-8 hard-shadow bg-white">
+                        <div class="font-bebas text-7xl text-brand-red mb-4 leading-none">01</div>
+                        <h3 class="font-source font-black text-2xl uppercase text-brand-black mb-4 border-b-2 border-brand-black pb-2">Choose Campaign</h3>
+                        <p class="font-source text-lg text-gray-800 leading-relaxed font-medium">Browse live bounties from podcasters, streamers, and brands. Download their raw footage directly.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="border-4 border-brand-black p-8 hard-shadow bg-white">
+                        <div class="font-bebas text-7xl text-brand-red mb-4 leading-none">02</div>
+                        <h3 class="font-source font-black text-2xl uppercase text-brand-black mb-4 border-b-2 border-brand-black pb-2">Edit & Post</h3>
+                        <p class="font-source text-lg text-gray-800 leading-relaxed font-medium">Work your magic. Add captions, sound effects, and post the short-form video to your own accounts.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="border-4 border-brand-black p-8 hard-shadow bg-brand-black text-brand-white">
+                        <div class="font-bebas text-7xl text-brand-red mb-4 leading-none">03</div>
+                        <h3 class="font-source font-black text-2xl uppercase text-brand-white mb-4 border-b-2 border-brand-red pb-2">Submit & Get Paid</h3>
+                        <p class="font-source text-lg text-gray-300 leading-relaxed font-medium">Paste your public video link in the dashboard. We track the views and credit your account directly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Campaigns Teaser -->
+        <section id="campaigns" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 class="font-abril text-5xl md:text-6xl text-brand-black mb-4">Trending Bounties</h2>
+                        <p class="font-source text-xl font-bold uppercase text-brand-red tracking-widest">These brands are paying right now.</p>
+                    </div>
+                    <a href="dashboard.html" class="font-source font-black text-xl uppercase text-brand-black hover:text-brand-red underline decoration-4 underline-offset-4 transition-colors">
+                        View All <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Sample Campaign -->
+                    <div class="border-4 border-brand-black bg-brand-white p-8 hard-shadow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-6">
+                                <h3 class="font-source font-black text-3xl uppercase text-brand-black max-w-[70%]">Tech Podcast Weekly</h3>
+                                <span class="bg-brand-black text-brand-white font-bebas text-xl px-4 py-1">YOUTUBE</span>
+                            </div>
+                            <p class="font-source text-lg text-gray-800 font-medium mb-8">Looking for controversial AI takes and startup advice. Clip punchy founder advice and add aggressive subtitles.</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between border-t-4 border-brand-black pt-6">
+                            <div>
+                                <p class="font-source font-black text-sm uppercase text-gray-500 mb-1">PAYOUT RATE</p>
+                                <p class="font-bebas text-5xl text-brand-red leading-none">$45<span class="text-2xl text-brand-black ml-1">/ 100K</span></p>
+                            </div>
+                            <a href="dashboard.html" class="bg-brand-black text-brand-white font-bebas text-2xl px-6 py-3 uppercase hover:bg-brand-red transition-colors">
+                                START CLIPPING
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Sample Campaign -->
+                    <div class="border-4 border-brand-black bg-brand-white p-8 hard-shadow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-6">
+                                <h3 class="font-source font-black text-3xl uppercase text-brand-black max-w-[70%]">ProGamer Highlights</h3>
+                                <span class="bg-brand-black text-brand-white font-bebas text-xl px-4 py-1">TWITCH</span>
+                            </div>
+                            <p class="font-source text-lg text-gray-800 font-medium mb-8">Rage quits, funny moments, and clutch FPS plays. High energy edits only. Must include stream overlay.</p>
+                        </div>
+                        
+                        <div class="flex items-center justify-between border-t-4 border-brand-black pt-6">
+                            <div>
+                                <p class="font-source font-black text-sm uppercase text-gray-500 mb-1">PAYOUT RATE</p>
+                                <p class="font-bebas text-5xl text-brand-red leading-none">$60<span class="text-2xl text-brand-black ml-1">/ 100K</span></p>
+                            </div>
+                            <a href="dashboard.html" class="bg-brand-black text-brand-white font-bebas text-2xl px-6 py-3 uppercase hover:bg-brand-red transition-colors">
+                                START CLIPPING
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-24 border-y-4 border-brand-black bg-brand-black text-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-source font-black text-4xl md:text-5xl uppercase text-brand-white mb-6">Stop editing for free.</h2>
+                <p class="font-abril text-2xl md:text-3xl text-brand-red mb-10">Join hundreds of clippers getting paid for their reach.</p>
+                <a href="dashboard.html" class="inline-block px-12 py-5 bg-brand-white text-brand-black font-bebas text-4xl tracking-widest uppercase border-4 border-brand-black hard-shadow hover:bg-brand-red hover:text-brand-white transition-colors">
+                    CREATE FREE ACCOUNT
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b-4 border-brand-black pb-8 mb-8">
+                <div class="mb-6 md:mb-0">
+                    <span class="font-abril text-4xl text-brand-black">Clip<span class="text-brand-red">Earn</span></span>
+                </div>
+                <div class="flex gap-6 font-source font-black uppercase text-brand-black">
+                    <a href="#" class="hover:text-brand-red">Terms</a>
+                    <a href="#" class="hover:text-brand-red">Privacy</a>
+                    <a href="#" class="hover:text-brand-red">Guidelines</a>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between font-source font-bold text-gray-600 text-sm">
+                <p>&copy; 2026 ClipEarn. ALL RIGHTS RESERVED.</p>
+                <p class="mt-2 md:mt-0 uppercase">Views manually audited to prevent botting.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 15s linear infinite;
+        }
+    </style>
 </body>
 </html>
