@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClipEarn | Monetize Your Short-Form Clips</title>
+    <title>Creator Dashboard | ClipReach</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Premium Font Stack -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Source+Sans+3:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
+                        'abril': ['"Abril Fatface"', 'serif'],
+                        'bebas': ['"Bebas Neue"', 'sans-serif'],
+                        'source': ['"Source Sans 3"', 'sans-serif']
                     },
                     colors: {
                         brand: {
-                            400: '#34d399',
-                            500: '#10b981',
-                            600: '#059669',
-                            glow: 'rgba(16, 185, 129, 0.15)'
-                        },
-                        surface: {
-                            800: '#1e293b',
-                            850: '#172033',
-                            900: '#0f172a',
-                            950: '#030712'
+                            red: '#ff0000',
+                            black: '#0a0a0a',
+                            white: '#ffffff',
+                            gray: '#f4f4f5',
+                            border: '#e4e4e7'
                         }
                     }
                 }
@@ -39,276 +36,212 @@
     </script>
 
     <style>
-        body { background-color: #030712; color: #f8fafc; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #10b981; }
-
-        .glass-card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.6) 100%);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-        }
-
-        .glass-input {
-            background: rgba(3, 7, 18, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #f8fafc;
-            transition: all 0.2s ease;
-        }
-        .glass-input:focus {
-            outline: none;
-            border-color: #10b981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-            background: rgba(3, 7, 18, 0.95);
+        body { background-color: #f4f4f5; color: #0a0a0a; }
+        
+        .premium-shadow {
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .campaign-radio:checked + label {
-            border-color: #10b981;
-            background: rgba(16, 185, 129, 0.08);
+            border-color: #0a0a0a;
+            background-color: #f4f4f5;
+        }
+        .campaign-radio:checked + label .radio-indicator {
+            background-color: #ff0000;
+            border-color: #ff0000;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col font-sans selection:bg-brand-500 selection:text-black">
+<body class="font-source antialiased min-h-screen flex flex-col">
 
     <!-- Top Navigation -->
-    <header class="border-b border-surface-800 bg-surface-950/80 backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-emerald-700 flex items-center justify-center text-black font-extrabold text-lg shadow-lg shadow-brand-500/20">
+    <header class="fixed w-full top-0 z-50 bg-brand-white/90 backdrop-blur-md border-b border-brand-border transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-lg bg-brand-black flex items-center justify-center text-brand-white text-sm group-hover:bg-brand-red transition-colors">
                     <i class="fa-solid fa-scissors"></i>
                 </div>
-                <span class="font-display font-bold text-xl tracking-tight text-white">Clip<span class="text-brand-500">Earn</span></span>
-                <span class="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-400 border border-brand-500/20">BETA</span>
-            </div>
+                <span class="font-abril text-2xl tracking-wide text-brand-black mt-1">Clip<span class="text-brand-red">Reach</span>.</span>
+            </a>
 
+            <!-- Multi-Page Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-source font-semibold text-[15px]">
+                <a href="campaigns.html" class="text-gray-600 hover:text-brand-black transition-colors">Campaigns</a>
+                <a href="leaderboard.html" class="text-gray-600 hover:text-brand-black transition-colors">Leaderboard</a>
+                <a href="payouts.html" class="text-gray-600 hover:text-brand-black transition-colors">How Payouts Work</a>
+            </nav>
+
+            <!-- Auth Profile Section -->
             <div class="flex items-center gap-4">
-                <div id="user-profile-header" class="hidden items-center gap-3 pr-2">
-                    <img id="user-avatar" src="" alt="Avatar" class="w-8 h-8 rounded-full border border-surface-700 object-cover">
-                    <span id="user-name" class="text-xs font-semibold text-gray-200 hidden md:inline"></span>
+                <div id="user-profile-header" class="hidden items-center gap-3 pr-4 border-r border-brand-border">
+                    <img id="user-avatar" src="" alt="Avatar" class="w-9 h-9 rounded-full object-cover premium-shadow">
+                    <div class="hidden sm:block">
+                        <p id="user-name" class="text-sm font-bold text-brand-black leading-tight"></p>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Creator</p>
+                    </div>
                 </div>
                 
-                <button id="auth-btn" class="px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all duration-200 bg-brand-500 text-black hover:bg-brand-400 shadow-md shadow-brand-500/20 flex items-center gap-2">
-                    <i class="fa-brands fa-google"></i>
-                    <span>Sign In with Google</span>
+                <button id="auth-btn" class="px-6 py-2.5 rounded-full bg-brand-black text-brand-white font-source font-bold text-[15px] hover:bg-brand-red transition-all duration-300 shadow-lg shadow-brand-red/10">
+                    <i class="fa-brands fa-google mr-2"></i> Log in
                 </button>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <main class="flex-grow pt-28 pb-24">
         
-        <!-- Welcome Hero Banner -->
-        <div class="relative overflow-hidden rounded-3xl glass-card p-6 sm:p-10 border border-surface-800">
-            <div class="absolute -right-16 -top-16 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 max-w-2xl">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-800/80 border border-surface-700 text-xs text-brand-400 font-semibold mb-4">
-                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                    Instant View Verification Engine Active
+        <!-- Logged Out State -->
+        <div id="logged-out-state" class="max-w-2xl mx-auto mt-20 px-4 text-center">
+            <div class="bg-brand-white p-12 rounded-3xl premium-shadow border border-brand-border">
+                <div class="w-20 h-20 bg-brand-gray rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fa-solid fa-lock text-3xl text-gray-400"></i>
                 </div>
-                <h1 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                    Clip High-Impact Media. <br><span class="text-brand-400">Get Paid for Every View.</span>
-                </h1>
-                <p class="text-gray-400 text-sm sm:text-base mt-3 leading-relaxed">
-                    Pick a live campaign, grab source video links, craft vertical shorts on TikTok, YouTube Shorts, or Instagram Reels, and submit your link below to cash in.
-                </p>
+                <h2 class="font-abril text-4xl text-brand-black mb-4">Access Your Dashboard</h2>
+                <p class="font-source text-gray-600 mb-8">Sign in with Google to submit links, track your verified views, and withdraw your earnings.</p>
+                <button onclick="document.getElementById('auth-btn').click()" class="px-8 py-3.5 rounded-full bg-brand-red text-brand-white font-source font-bold text-lg hover:bg-red-700 transition-all shadow-lg shadow-brand-red/20">
+                    Sign in with Google
+                </button>
             </div>
         </div>
 
-        <!-- Real-Time Metrics Bar -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between text-gray-400 text-xs font-semibold tracking-wider uppercase mb-2">
-                    <span>Pending Earnings</span>
-                    <i class="fa-solid fa-wallet text-brand-400"></i>
-                </div>
-                <div class="text-3xl font-display font-extrabold text-white" id="stat-pending-balance">$0.00</div>
-                <p class="text-[11px] text-gray-500 mt-2">Credits upon verified link review</p>
+        <!-- Logged In State (Hidden by default) -->
+        <div id="logged-in-state" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hidden">
+            
+            <div class="mb-10">
+                <h1 class="font-abril text-4xl md:text-5xl text-brand-black mb-2">Creator Dashboard</h1>
+                <p class="font-source text-gray-600">Submit your clips and monitor your performance.</p>
             </div>
 
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between text-gray-400 text-xs font-semibold tracking-wider uppercase mb-2">
-                    <span>Verified Views</span>
-                    <i class="fa-solid fa-fire text-amber-400"></i>
-                </div>
-                <div class="text-3xl font-display font-extrabold text-white" id="stat-verified-views">0</div>
-                <p class="text-[11px] text-gray-500 mt-2">Cumulative views cleared for payout</p>
-            </div>
-
-            <div class="glass-card p-6 rounded-2xl">
-                <div class="flex items-center justify-between text-gray-400 text-xs font-semibold tracking-wider uppercase mb-2">
-                    <span>Approved Clips</span>
-                    <i class="fa-solid fa-circle-check text-blue-400"></i>
-                </div>
-                <div class="text-3xl font-display font-extrabold text-white" id="stat-approved-clips">0</div>
-                <p class="text-[11px] text-gray-500 mt-2">Active qualified submissions</p>
-            </div>
-        </div>
-
-        <!-- Clip Submission Section -->
-        <div class="glass-card rounded-2xl p-6 sm:p-8 border border-brand-500/20 shadow-xl shadow-brand-500/5">
-            <div class="mb-6">
-                <h2 class="font-display text-xl font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-paper-plane text-brand-400"></i> Submit Your Clip
-                </h2>
-                <p class="text-xs text-gray-400 mt-1">Select the campaign you edited for, paste your published post URL, and submit.</p>
-            </div>
-
-            <form id="submission-form" class="space-y-6">
-                <!-- Campaign Selector -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-3">1. Select Target Campaign</label>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="campaign-picker">
-                        <!-- Campaign 1 -->
-                        <div class="relative">
-                            <input type="radio" name="selected_campaign" id="camp-1" value="Tech Podcast Weekly" data-rate="45" class="campaign-radio sr-only" checked>
-                            <label for="camp-1" class="flex items-center justify-between p-4 rounded-xl border border-surface-700 bg-surface-900/60 cursor-pointer hover:border-surface-600 transition-all">
-                                <div>
-                                    <div class="font-semibold text-sm text-white">Tech Podcast Weekly</div>
-                                    <div class="text-xs text-gray-400 mt-0.5">Focus: AI Startups, Founders</div>
-                                </div>
-                                <span class="px-2.5 py-1 rounded-md bg-surface-800 text-brand-400 font-bold text-xs border border-surface-700">
-                                    $45 / 100k views
-                                </span>
-                            </label>
-                        </div>
-
-                        <!-- Campaign 2 -->
-                        <div class="relative">
-                            <input type="radio" name="selected_campaign" id="camp-2" value="ProGamer Live Highlights" data-rate="60" class="campaign-radio sr-only">
-                            <label for="camp-2" class="flex items-center justify-between p-4 rounded-xl border border-surface-700 bg-surface-900/60 cursor-pointer hover:border-surface-600 transition-all">
-                                <div>
-                                    <div class="font-semibold text-sm text-white">ProGamer Live Highlights</div>
-                                    <div class="text-xs text-gray-400 mt-0.5">Focus: Clutch Plays, Funny Fails</div>
-                                </div>
-                                <span class="px-2.5 py-1 rounded-md bg-surface-800 text-brand-400 font-bold text-xs border border-surface-700">
-                                    $60 / 100k views
-                                </span>
-                            </label>
-                        </div>
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                <div class="bg-brand-white border border-brand-border rounded-2xl p-6 premium-shadow">
+                    <div class="flex items-center justify-between text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">
+                        <span>Pending Earnings</span>
+                        <i class="fa-solid fa-wallet text-brand-black"></i>
                     </div>
+                    <div class="font-bebas text-5xl text-brand-red" id="stat-pending-balance">$0.00</div>
+                    <p class="font-source text-[11px] text-gray-500 mt-2 font-semibold">Ready for withdrawal at $50.00</p>
                 </div>
 
-                <!-- URL Input -->
-                <div>
-                    <label for="clip-url" class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">2. Paste Public Short Link</label>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <div class="relative flex-1">
-                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500">
-                                <i class="fa-solid fa-link"></i>
-                            </div>
-                            <input type="url" id="clip-url" required placeholder="https://www.tiktok.com/@user/video/... or youtube.com/shorts/..." class="glass-input w-full pl-10 pr-4 py-3 rounded-xl text-sm placeholder-gray-500">
-                        </div>
-                        <button type="submit" id="submit-btn" class="px-6 py-3 rounded-xl bg-brand-500 text-black font-extrabold text-sm hover:bg-brand-400 transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 whitespace-nowrap">
-                            <i class="fa-solid fa-bolt"></i>
-                            <span>Submit for Verification</span>
-                        </button>
+                <div class="bg-brand-white border border-brand-border rounded-2xl p-6 premium-shadow">
+                    <div class="flex items-center justify-between text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">
+                        <span>Verified Views</span>
+                        <i class="fa-solid fa-fire text-brand-black"></i>
                     </div>
-                    <p class="text-[11px] text-gray-500 mt-2">Supported formats: TikTok, YouTube Shorts, and Instagram Reels links.</p>
+                    <div class="font-bebas text-5xl text-brand-black" id="stat-verified-views">0</div>
+                    <p class="font-source text-[11px] text-gray-500 mt-2 font-semibold">Total across all approved clips</p>
                 </div>
-            </form>
-        </div>
 
-        <!-- Live Campaigns Marketplace -->
-        <div>
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="font-display text-xl font-bold text-white">Available Source Campaigns</h2>
-                <span class="text-xs font-semibold text-gray-400">Total Bounty Pool: <strong class="text-brand-400">$12,400</strong></span>
+                <div class="bg-brand-white border border-brand-border rounded-2xl p-6 premium-shadow">
+                    <div class="flex items-center justify-between text-gray-500 text-xs font-bold uppercase tracking-widest mb-3">
+                        <span>Approved Clips</span>
+                        <i class="fa-solid fa-circle-check text-brand-black"></i>
+                    </div>
+                    <div class="font-bebas text-5xl text-brand-black" id="stat-approved-clips">0</div>
+                    <p class="font-source text-[11px] text-gray-500 mt-2 font-semibold">Currently tracking active links</p>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Card 1 -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border border-surface-800 hover:border-surface-700 transition-all">
-                    <div>
-                        <div class="flex items-start justify-between gap-4 mb-3">
+            <!-- Main Workspace Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: Submission Form -->
+                <div class="lg:col-span-1">
+                    <div class="bg-brand-white border border-brand-border rounded-2xl p-6 premium-shadow sticky top-28">
+                        <h2 class="font-source font-bold text-xl text-brand-black mb-1">Submit a Link</h2>
+                        <p class="font-source text-xs text-gray-500 mb-6">Select a campaign and paste your URL.</p>
+
+                        <form id="submission-form" class="space-y-6">
+                            
+                            <!-- Campaign Selection -->
                             <div>
-                                <h3 class="font-bold text-lg text-white">Tech Podcast Weekly</h3>
-                                <p class="text-xs text-gray-400">Source: YouTube Long-form Episodes</p>
+                                <label class="block font-source font-bold text-xs uppercase tracking-widest text-gray-500 mb-3">1. Select Campaign</label>
+                                <div class="space-y-3">
+                                    <div class="relative">
+                                        <input type="radio" name="selected_campaign" id="camp-1" value="Tech Podcast Weekly" data-rate="45" class="campaign-radio sr-only" checked>
+                                        <label for="camp-1" class="flex items-start gap-3 p-4 rounded-xl border border-brand-border cursor-pointer transition-all hover:bg-gray-50">
+                                            <div class="radio-indicator w-4 h-4 rounded-full border-2 border-gray-300 mt-0.5 flex-shrink-0 transition-colors"></div>
+                                            <div>
+                                                <p class="font-source font-bold text-brand-black text-sm leading-tight">Tech Podcast Weekly</p>
+                                                <p class="font-source text-xs text-brand-red font-bold mt-1">$45 / 100k views</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="relative">
+                                        <input type="radio" name="selected_campaign" id="camp-2" value="ProGamer Live Highlights" data-rate="60" class="campaign-radio sr-only">
+                                        <label for="camp-2" class="flex items-start gap-3 p-4 rounded-xl border border-brand-border cursor-pointer transition-all hover:bg-gray-50">
+                                            <div class="radio-indicator w-4 h-4 rounded-full border-2 border-gray-300 mt-0.5 flex-shrink-0 transition-colors"></div>
+                                            <div>
+                                                <p class="font-source font-bold text-brand-black text-sm leading-tight">ProGamer Highlights</p>
+                                                <p class="font-source text-xs text-brand-red font-bold mt-1">$60 / 100k views</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-400 border border-brand-500/20">Active</span>
-                        </div>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                            Clip punchy founder advice, dramatic AI predictions, and spicy debate moments. Add subtitles and retain the bottom-right channel watermark.
-                        </p>
-                        <div class="flex items-center gap-2 mb-4">
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-400 hover:underline">
-                                <i class="fa-brands fa-youtube"></i> Access Raw Footage <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-surface-800 flex items-center justify-between text-xs">
-                        <span class="text-gray-400">Payout: <strong class="text-white font-bold">$45.00</strong> / 100k views</span>
-                        <span class="text-gray-400">Budget: <strong class="text-brand-400 font-bold">$7,200 remaining</strong></span>
-                    </div>
-                </div>
 
-                <!-- Card 2 -->
-                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between border border-surface-800 hover:border-surface-700 transition-all">
-                    <div>
-                        <div class="flex items-start justify-between gap-4 mb-3">
+                            <!-- URL Input -->
                             <div>
-                                <h3 class="font-bold text-lg text-white">ProGamer Live Highlights</h3>
-                                <p class="text-xs text-gray-400">Source: Twitch Daily VODs</p>
+                                <label for="clip-url" class="block font-source font-bold text-xs uppercase tracking-widest text-gray-500 mb-2">2. Paste Public Link</label>
+                                <input type="url" id="clip-url" required placeholder="https://tiktok.com/@user/video/..." class="w-full bg-gray-50 border border-brand-border rounded-xl px-4 py-3 font-source text-sm focus:outline-none focus:border-brand-black focus:ring-1 focus:ring-brand-black transition-all">
+                                <p class="font-source text-[11px] text-gray-500 mt-2">TikTok, Shorts, or Reels supported.</p>
                             </div>
-                            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-400 border border-brand-500/20">Active</span>
-                        </div>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                            Clip clutch 1v4 round wins, high-energy screams, and funny mic fails. Minimum 1080x1920 portrait format required with clean sound cuts.
-                        </p>
-                        <div class="flex items-center gap-2 mb-4">
-                            <a href="https://twitch.tv" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-400 hover:underline">
-                                <i class="fa-brands fa-twitch"></i> Access Stream VODs <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-surface-800 flex items-center justify-between text-xs">
-                        <span class="text-gray-400">Payout: <strong class="text-white font-bold">$60.00</strong> / 100k views</span>
-                        <span class="text-gray-400">Budget: <strong class="text-brand-400 font-bold">$5,200 remaining</strong></span>
+
+                            <button type="submit" id="submit-btn" class="w-full py-3.5 rounded-xl bg-brand-red text-brand-white font-source font-bold text-sm hover:bg-red-700 transition-all shadow-lg shadow-brand-red/20 flex justify-center items-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> Submit for Review
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- User Submission History Table -->
-        <div class="glass-card rounded-2xl overflow-hidden border border-surface-800">
-            <div class="p-6 border-b border-surface-800 flex items-center justify-between">
-                <h2 class="font-display text-lg font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-brand-400"></i> Your Submitted Clips
-                </h2>
-                <span id="history-count" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-surface-800 text-gray-300 border border-surface-700">0 clips</span>
-            </div>
+                <!-- Right Column: Submission History -->
+                <div class="lg:col-span-2">
+                    <div class="bg-brand-white border border-brand-border rounded-2xl premium-shadow overflow-hidden">
+                        <div class="p-6 border-b border-brand-border flex items-center justify-between bg-gray-50">
+                            <div>
+                                <h2 class="font-source font-bold text-xl text-brand-black">Submission History</h2>
+                                <p class="font-source text-xs text-gray-500 mt-1">Track the status of your uploaded clips.</p>
+                            </div>
+                            <span id="history-count" class="font-source font-bold text-xs bg-brand-black text-brand-white px-3 py-1 rounded-full">0 Clips</span>
+                        </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs">
-                    <thead>
-                        <tr class="bg-surface-950/60 border-b border-surface-800 text-gray-400 uppercase tracking-wider">
-                            <th class="p-4 font-semibold">Clip Link</th>
-                            <th class="p-4 font-semibold">Campaign</th>
-                            <th class="p-4 font-semibold">Status</th>
-                            <th class="p-4 font-semibold">Verified Views</th>
-                            <th class="p-4 font-semibold text-right">Earned</th>
-                        </tr>
-                    </thead>
-                    <tbody id="submissions-tbody" class="divide-y divide-surface-800 text-gray-300">
-                        <tr>
-                            <td colspan="5" class="p-8 text-center text-gray-500 font-medium">
-                                Sign in and submit your first clip to start tracking views and earnings.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left font-source">
+                                <thead>
+                                    <tr class="border-b border-brand-border bg-white text-gray-500 text-xs uppercase tracking-wider font-bold">
+                                        <th class="p-5 font-bold">Link</th>
+                                        <th class="p-5 font-bold">Campaign</th>
+                                        <th class="p-5 font-bold">Status</th>
+                                        <th class="p-5 font-bold">Views</th>
+                                        <th class="p-5 font-bold text-right">Earned</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="submissions-tbody" class="divide-y divide-brand-border bg-white text-sm">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </main>
 
-    <!-- Master Footer -->
-    <footer class="border-t border-surface-800 bg-surface-950 py-8 text-center text-xs text-gray-500">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026 ClipEarn. All systems operational.</p>
-            <p class="text-gray-600">Views manually audited against platform APIs to prevent botting.</p>
+    <!-- Professional Footer -->
+    <footer class="bg-brand-white pt-16 pb-8 border-t border-brand-border mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 font-source text-gray-500 text-sm">
+                <p>&copy; 2026 ClipReach. All rights reserved.</p>
+                <div class="flex gap-6 text-lg">
+                    <a href="#" class="hover:text-brand-black transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-brand-black transition-colors"><i class="fa-brands fa-discord"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -336,7 +269,7 @@
             serverTimestamp 
         } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-        // Firebase configuration initialized with values from clip-reach project
+        // Your exact Firebase Web Config
         const firebaseConfig = {
             apiKey: "AIzaSyALx-LhVLUtG-RDjI3pQ0rhIvrjwptEo2s",
             authDomain: "clip-reach.firebaseapp.com",
@@ -356,13 +289,19 @@
         let unsubscribeUserListener = null;
         let unsubscribeClipsListener = null;
 
+        // UI Elements
         const authBtn = document.getElementById("auth-btn");
         const profileHeader = document.getElementById("user-profile-header");
         const userAvatar = document.getElementById("user-avatar");
         const userName = document.getElementById("user-name");
+        
+        const loggedOutState = document.getElementById("logged-out-state");
+        const loggedInState = document.getElementById("logged-in-state");
+
         const statPendingBalance = document.getElementById("stat-pending-balance");
         const statVerifiedViews = document.getElementById("stat-verified-views");
         const statApprovedClips = document.getElementById("stat-approved-clips");
+        
         const submissionForm = document.getElementById("submission-form");
         const submitBtn = document.getElementById("submit-btn");
         const submissionsTbody = document.getElementById("submissions-tbody");
@@ -377,13 +316,12 @@
                     const res = await signInWithPopup(auth, provider);
                     const user = res.user;
 
-                    // Initialize user profile document in Firestore if new
                     const userRef = doc(db, "users", user.uid);
                     const snap = await getDoc(userRef);
                     if (!snap.exists()) {
                         await setDoc(userRef, {
                             email: user.email,
-                            displayName: user.displayName || "Clipper",
+                            displayName: user.displayName || "Creator",
                             photoURL: user.photoURL || "",
                             verified_views: 0,
                             pending_balance: 0.0,
@@ -403,8 +341,13 @@
             currentUser = user;
 
             if (user) {
-                authBtn.innerHTML = '<i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Sign Out</span>';
-                authBtn.className = "px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all duration-200 bg-surface-800 text-gray-300 hover:text-white hover:bg-surface-700 border border-surface-700 flex items-center gap-2";
+                // UI Toggle
+                loggedOutState.classList.add("hidden");
+                loggedInState.classList.remove("hidden");
+
+                // Navbar Update
+                authBtn.innerHTML = 'Sign out';
+                authBtn.className = "font-source font-bold text-sm text-gray-500 hover:text-brand-red transition-colors";
                 
                 profileHeader.classList.remove("hidden");
                 profileHeader.classList.add("flex");
@@ -431,13 +374,13 @@
                 );
 
                 unsubscribeClipsListener = onSnapshot(clipsQuery, (snapshot) => {
-                    historyCount.textContent = `${snapshot.size} ${snapshot.size === 1 ? 'clip' : 'clips'}`;
+                    historyCount.textContent = `${snapshot.size} Clips`;
                     
                     if (snapshot.empty) {
                         submissionsTbody.innerHTML = `
                             <tr>
-                                <td colspan="5" class="p-8 text-center text-gray-500 font-medium">
-                                    No clips submitted yet. Submit a link above to get started!
+                                <td colspan="5" class="p-10 text-center text-gray-500">
+                                    No clips submitted yet. Submit a link to start tracking!
                                 </td>
                             </tr>
                         `;
@@ -448,59 +391,50 @@
                     snapshot.forEach((docItem) => {
                         const clip = docItem.data();
                         
-                        let badgeClass = "bg-amber-500/10 text-amber-400 border-amber-500/20";
+                        let badgeClass = "bg-gray-100 text-gray-600 border-gray-200";
                         let statusIcon = '<i class="fa-solid fa-clock"></i>';
                         if (clip.status === "approved") {
-                            badgeClass = "bg-brand-500/10 text-brand-400 border-brand-500/20";
+                            badgeClass = "bg-green-50 text-green-600 border-green-200";
                             statusIcon = '<i class="fa-solid fa-check"></i>';
                         } else if (clip.status === "rejected") {
-                            badgeClass = "bg-red-500/10 text-red-400 border-red-500/20";
+                            badgeClass = "bg-red-50 text-brand-red border-red-200";
                             statusIcon = '<i class="fa-solid fa-xmark"></i>';
                         }
 
                         const tr = document.createElement("tr");
-                        tr.className = "hover:bg-surface-850/50 transition-colors";
+                        tr.className = "hover:bg-gray-50 transition-colors";
                         tr.innerHTML = `
-                            <td class="p-4 font-mono">
-                                <a href="${clip.video_url}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline flex items-center gap-1.5">
-                                    <span>${clip.video_url.length > 36 ? clip.video_url.slice(0, 36) + "..." : clip.video_url}</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            <td class="p-5 font-mono text-xs">
+                                <a href="${clip.video_url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+                                    ${clip.video_url.length > 28 ? clip.video_url.slice(0, 28) + "..." : clip.video_url}
                                 </a>
                             </td>
-                            <td class="p-4 font-medium text-gray-200">${clip.campaign_name}</td>
-                            <td class="p-4">
-                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1 border ${badgeClass}">
+                            <td class="p-5 font-bold text-brand-black">${clip.campaign_name}</td>
+                            <td class="p-5">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider inline-flex items-center gap-1 border ${badgeClass}">
                                     ${statusIcon} ${clip.status}
                                 </span>
                             </td>
-                            <td class="p-4 font-semibold text-white">${(clip.verified_views || 0).toLocaleString()}</td>
-                            <td class="p-4 text-right font-bold font-mono text-brand-400">+$${(clip.payout_amount || 0).toFixed(2)}</td>
+                            <td class="p-5 font-bold text-brand-black">${(clip.verified_views || 0).toLocaleString()}</td>
+                            <td class="p-5 text-right font-bold text-brand-red">+$${(clip.payout_amount || 0).toFixed(2)}</td>
                         `;
                         submissionsTbody.appendChild(tr);
                     });
                 }, (err) => {
-                    console.error("Clips listener error:", err);
+                    console.error("Clips listener error (Ensure Firebase Index is created if requested in console):", err);
                 });
 
             } else {
-                authBtn.innerHTML = '<i class="fa-brands fa-google"></i> <span>Sign In with Google</span>';
-                authBtn.className = "px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all duration-200 bg-brand-500 text-black hover:bg-brand-400 shadow-md shadow-brand-500/20 flex items-center gap-2";
+                // UI Toggle
+                loggedInState.classList.add("hidden");
+                loggedOutState.classList.remove("hidden");
+
+                // Navbar Update
+                authBtn.innerHTML = '<i class="fa-brands fa-google mr-2"></i> Log in';
+                authBtn.className = "px-6 py-2.5 rounded-full bg-brand-black text-brand-white font-source font-bold text-[15px] hover:bg-brand-red transition-all duration-300 shadow-lg shadow-brand-red/10";
                 
                 profileHeader.classList.add("hidden");
                 profileHeader.classList.remove("flex");
-
-                statPendingBalance.textContent = "$0.00";
-                statVerifiedViews.textContent = "0";
-                statApprovedClips.textContent = "0";
-
-                submissionsTbody.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="p-8 text-center text-gray-500 font-medium">
-                            Sign in and submit your first clip to start tracking views and earnings.
-                        </td>
-                    </tr>
-                `;
-                historyCount.textContent = "0 clips";
 
                 if (unsubscribeUserListener) unsubscribeUserListener();
                 if (unsubscribeClipsListener) unsubscribeClipsListener();
@@ -511,11 +445,7 @@
         submissionForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            if (!currentUser) {
-                alert("Please sign in with Google before submitting a clip!");
-                authBtn.click();
-                return;
-            }
+            if (!currentUser) return;
 
             const urlInput = document.getElementById("clip-url");
             const rawUrl = urlInput.value.trim();
@@ -531,13 +461,13 @@
 
             const originalBtnHtml = submitBtn.innerHTML;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> <span>Submitting...</span>';
+            submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Submitting...';
 
             try {
                 await addDoc(collection(db, "submissions"), {
                     userId: currentUser.uid,
                     userEmail: currentUser.email,
-                    userName: currentUser.displayName || "Clipper",
+                    userName: currentUser.displayName || "Creator",
                     video_url: rawUrl,
                     campaign_name: campaignName,
                     rate_per_100k: ratePer100k,
@@ -548,7 +478,7 @@
                 });
 
                 urlInput.value = "";
-                alert("Clip submitted successfully! It is now listed below and pending view audit.");
+                alert("Clip submitted successfully! It is now pending view audit.");
             } catch (err) {
                 console.error("Submission failed:", err);
                 alert("Failed to submit clip: " + err.message);
